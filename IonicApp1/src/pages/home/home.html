@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Home</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngIf="dish">
+        <ion-card-content>
+            <img src="{{baseURL + dish.image}}" />
+            <ion-card-title>
+                {{dish.name | uppercase}}
+            </ion-card-title>
+            <p>{{dish.description}}</p>
+        </ion-card-content>
+    </ion-card>
+    <div [hidden]="dish || dishErrMsg">
+        <ion-spinner></ion-spinner>
+        <h4>Loading... Please wait</h4>
+    </div>
+    <div *ngIf="dishErrMsg">
+        <h2>Error</h2>
+        <p>{{dishErrMsg}}</p>
+    </div>
+
+    <ion-card *ngIf="leader">
+        <ion-card-content>
+            <img src="{{baseURL + leader.image}}" />
+            <ion-card-title>
+                {{leader.name | uppercase}}
+            </ion-card-title>
+            <p>{{leader.designation}}</p>
+            <p>{{leader.description}}</p>
+        </ion-card-content>
+    </ion-card>
+    <div [hidden]="leader || leaderErrMsg">
+        <ion-spinner></ion-spinner>
+        <h4>Loading... Please wait</h4>
+    </div>
+    <div *ngIf="leaderErrMsg">
+        <h2>Error</h2>
+        <p>{{leaderErrMsg}}</p>
+    </div>
+
+    <ion-card *ngIf="promotion">
+        <ion-card-content>
+            <img src="{{baseURL + promotion.image}}" />
+            <ion-card-title>
+                {{promotion.name | uppercase}}
+            </ion-card-title>
+            <p>{{promotion.description}}</p>
+        </ion-card-content>
+    </ion-card>
+    <div [hidden]="promotion || promotionErrMsg">
+        <ion-spinner></ion-spinner>
+        <h4>Loading... Please wait</h4>
+    </div>
+    <div *ngIf="promotionErrMsg">
+        <h2>Error</h2>
+        <p>{{promotionErrMsg}}</p>
+    </div>
+</ion-content>
